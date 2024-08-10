@@ -9,6 +9,7 @@ type msg = {
 type Chats = {
   loading: boolean;
   error: string | null;
+  setMenu: (item: string) => void;
   chats: Array<msg>;
   addChat: (event: React.FormEvent<HTMLFormElement>) => void;
 };
@@ -16,6 +17,7 @@ type Chats = {
 const ChatContext = createContext<Chats>({
   loading: false,
   error: null,
+  setMenu: (item: string) => {},
   chats: [],
   addChat: async (event: React.FormEvent<HTMLFormElement>) => {},
 });
@@ -23,7 +25,13 @@ const ChatContext = createContext<Chats>({
 const ChatProvider = ({ children }: PropsWithChildren) => {
   const [chats, setChats] = useState<Array<msg>>([]);
   const [error, setError] = useState<string | null>(null);
+  const [selectedPrompt, setSelectedPrompt] = useState<string>("");
   const [loading, setLoading] = useState(false);
+
+  const setMenu = (item: string) => {
+    setSelectedPrompt(item);
+    // console.log(item)
+  };
 
   const addChat = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -31,6 +39,10 @@ const ChatProvider = ({ children }: PropsWithChildren) => {
 
     const formData = new FormData(event.currentTarget);
     const query = formData.get("prompt")?.toString();
+
+    // Add selectedPrompt to formData
+    formData.append("selectedPrompt", selectedPrompt);
+    
     // Will set the USER Query Chats here
     query &&
       setChats((prevChats) => [...prevChats, { role: "usr", content: query }]);
@@ -63,7 +75,7 @@ const ChatProvider = ({ children }: PropsWithChildren) => {
   };
 
   return (
-    <ChatContext.Provider value={{ loading, error, chats, addChat }}>
+    <ChatContext.Provider value={{ loading, error, setMenu, chats, addChat }}>
       {children}
     </ChatContext.Provider>
   );

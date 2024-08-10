@@ -14,9 +14,11 @@ import {
 import { FilePond } from "react-filepond";
 import "filepond/dist/filepond.min.css";
 import { Beam, Cover } from "@/components/ui/cover";
+import { useChats } from "@/providers/ChatProvider";
 
 export function Navbar({ className }: { className?: string }) {
   const [selected, setSelected] = useState("");
+  const {setMenu} = useChats();
   return (
     <div
       className={cn(
@@ -36,7 +38,7 @@ export function Navbar({ className }: { className?: string }) {
       </div>
       <div className="flex justify-center items-center max-w-2xl">
         <Select
-          onValueChange={(value) => setSelected(value)}
+          onValueChange={(value) => {setSelected(value); setMenu(value)}}
           defaultValue={selected}
         >
           <Cover>

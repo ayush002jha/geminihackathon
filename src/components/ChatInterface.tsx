@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useChats } from '@/providers/ChatProvider';
 import { SiGooglegemini } from "react-icons/si";
 import { FaUser } from "react-icons/fa";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const ChatInterface = () => {
   const { loading, error, chats, addChat } = useChats();
@@ -42,7 +44,22 @@ const ChatInterface = () => {
           {index === streamingIndex ? (
             <StreamingText text={msg.content} onComplete={() => setStreamingIndex(-1)} />
           ) : (
-            msg.content
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm]}
+              components={{
+                p: ({node, ...props}) => <p className="mb-2" {...props} />,
+                a: ({node, ...props}) => <a className="text-blue-300 underline" {...props} />,
+                ul: ({node, ...props}) => <ul className="list-disc list-inside mb-2" {...props} />,
+                ol: ({node, ...props}) => <ol className="list-decimal list-inside mb-2" {...props} />,
+                pre: ({node, ...props}) => <pre className="bg-gray-800 text-white p-2 rounded mb-2 overflow-x-auto" {...props} />,
+                // code: ({node, ...props}) => 
+                //   inline 
+                //     ? <code className="bg-gray-200 text-red-500 px-1 rounded" {...props} />
+                //     : <code {...props} />,
+              }}
+            >
+              {msg.content}
+            </ReactMarkdown>
           )}
         </div>
         {!isUser && (
@@ -55,17 +72,16 @@ const ChatInterface = () => {
   };
 
   return (
-      <div className="w-full min-w-[60%] bg-muted rounded-lg shadow-md flex flex-col h-[80vh] mt-48">
-
-        <div 
-          ref={chatContainerRef}
-          className="flex-grow overflow-y-auto p-4"
-        >
-          <div className="flex flex-col">
-            {[...chats].reverse().map((msg, index) => renderChatBubble(msg, chats.length - 1 - index))}
-          </div>
+    <div className="w-full min-w-4xl bg-muted rounded-lg shadow-md flex flex-col h-[80vh] mt-48 p-12">
+      <div 
+        ref={chatContainerRef}
+        className="flex-grow overflow-y-auto p-4"
+      >
+        <div className="flex flex-col">
+          {[...chats].reverse().map((msg, index) => renderChatBubble(msg, chats.length - 1 - index))}
         </div>
       </div>
+    </div>
   );
 };
 
@@ -92,7 +108,7 @@ const StreamingText: React.FC<{ text: string; onComplete: () => void }> = ({
     };
   }, [text, onComplete]);
 
-  return <span>{displayedText}</span>;
+  return <ReactMarkdown remarkPlugins={[remarkGfm]}>{displayedText}</ReactMarkdown>;
 };
 
 export default ChatInterface;
