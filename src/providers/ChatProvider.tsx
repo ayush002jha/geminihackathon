@@ -4,6 +4,7 @@ import { PropsWithChildren, createContext, useContext, useState } from "react";
 type msg = {
   role: string;
   content: string;
+  promptType: string;
 };
 
 type Chats = {
@@ -25,7 +26,7 @@ const ChatContext = createContext<Chats>({
 const ChatProvider = ({ children }: PropsWithChildren) => {
   const [chats, setChats] = useState<Array<msg>>([]);
   const [error, setError] = useState<string | null>(null);
-  const [selectedPrompt, setSelectedPrompt] = useState<string>("");
+  const [selectedPrompt, setSelectedPrompt] = useState<string>("explain");
   const [loading, setLoading] = useState(false);
 
   const setMenu = (item: string) => {
@@ -42,10 +43,10 @@ const ChatProvider = ({ children }: PropsWithChildren) => {
 
     // Add selectedPrompt to formData
     formData.append("selectedPrompt", selectedPrompt);
-    
+
     // Will set the USER Query Chats here
     query &&
-      setChats((prevChats) => [...prevChats, { role: "usr", content: query }]);
+      setChats((prevChats) => [...prevChats, { role: "usr", content: query, promptType:selectedPrompt }]);
     try {
       setLoading(true);
 
@@ -62,7 +63,7 @@ const ChatProvider = ({ children }: PropsWithChildren) => {
         // Add the bot's response to the chats array
         setChats((prevChats) => [
           ...prevChats,
-          { role: "bot", content: result.message },
+          { role: "bot", content: result.message, promptType:selectedPrompt },
         ]);
       }
     } catch (err) {

@@ -1,9 +1,9 @@
 export const Prompts = [
   {
     type: "mcq",
-    prompt: `Given the following context, generate a JSON response with a multiple-choice question (MCQ). The JSON should include the question, four options labeled A, B, C, and D, and the correct answer. Ensure the answer key matches the correct option.
+    prompt: `Given the following context, generate a JSON response with a multiple-choice question (MCQ). Generate 5 MCQs JSON Array Related To Question And Context. The JSON should include the question, four options labeled A, B, C, and D, and the correct answer. Ensure the answer key matches the correct option.
 
-
+Give Only JSON Array in Output and Nothing else! The JSON Array should be in stringified format without '''json ''' backticks
 Output Format:
 {
     "question": "What is the capital of France?",

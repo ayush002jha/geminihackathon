@@ -50,6 +50,7 @@ Answer:`;
     const result = await model.generateContent(fullPrompt);
     const response = result.response;
     const text = response.text();
+    console.log(text)
     return Response.json({ message: text }, { status: 200 });
   } catch (error) {
     console.error("Error From Model API:", error);
