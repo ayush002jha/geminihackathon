@@ -6,6 +6,7 @@ import { FaUser } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import quizData from "./TestData/quizData";
+import { Cover } from "./ui/cover";
 
 const ChatInterface = () => {
   const { loading, error, chats, addChat } = useChats();
@@ -91,8 +92,8 @@ const ChatInterface = () => {
       <div ref={chatContainerRef} className="flex-grow overflow-y-auto md:p-4">
         <div className="flex flex-col">
           {[...chats].reverse().map((msg, index) => {
-            if (msg.promptType === "mcq" && msg.role === 'bot') {
-              console.log(msg.content)
+            if (msg.promptType === "mcq" && msg.role === "bot") {
+              console.log(msg.content);
               const quizData: QuizQuestion[] = JSON.parse(msg.content);
               return <Quiz key={index} quizData={quizData} />; // Pass quizData as a prop
             }
@@ -167,7 +168,9 @@ const Quiz: React.FC<QuizProps> = ({ quizData }) => {
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
-      Multiple Choice Questions
+      <h1 className="text-2xl md:text-2xl lg:text-4xl font-semibold max-w-7xl mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
+        <Cover>Objective Questions</Cover>
+      </h1>
       {quizData.map((item, index) => (
         <div key={index} className="mb-6 p-4 bg-white shadow-lg rounded-lg">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">
