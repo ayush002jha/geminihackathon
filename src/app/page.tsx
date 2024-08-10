@@ -1,10 +1,16 @@
-import Input from "@/component/Input";
-import Image from "next/image";
+"use client";
+
+import { Navbar } from "@/components/Navbar";
+
+import { useChats } from "@/providers/ChatProvider";
 
 export default function Home() {
+  const {chats} = useChats();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Input />
+    <main className="flex min-h-screen flex-col items-center justify-center p-24 pt-0 w-full">
+
+      <Navbar />
+      {JSON.stringify(chats)}
     </main>
   );
 }

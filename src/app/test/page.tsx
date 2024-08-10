@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import quizData from '../../component/TestData/quizData';
+import quizData from '../../components/TestData/quizData';
 
 const Quiz: React.FC = () => {
     const [selectedOptions, setSelectedOptions] = useState<Record<number, string | null>>(
