@@ -26,12 +26,13 @@ const ChatContext = createContext<Chats>({
 const ChatProvider = ({ children }: PropsWithChildren) => {
   const [chats, setChats] = useState<Array<msg>>([]);
   const [error, setError] = useState<string | null>(null);
-  const [selectedPrompt, setSelectedPrompt] = useState<string>("explain");
+  const [selectedPrompt, setSelectedPrompt] = useState<string>("Explain");
   const [loading, setLoading] = useState(false);
 
   const setMenu = (item: string) => {
     setSelectedPrompt(item);
-    // console.log(item)
+    console.log(item)
+    console.log(chats)
   };
 
   const addChat = async (event: React.FormEvent<HTMLFormElement>) => {
