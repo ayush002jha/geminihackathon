@@ -45,11 +45,11 @@ export default function Home() {
   ];
   const [open, setOpen] = useState(false);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 w-full">
+    <main className="flex min-h-screen flex-col items-center justify-center p-1 md:p-4 w-full">
       <div
         className={cn(
           "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1  mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
-          " max-h-[95vh]" // for your use case, use `h-screen` instead of `h-[60vh]`
+          " md:max-h-[95vh]" // for your use case, use `h-screen` instead of `h-[60vh]`
         )}
       >
         <Sidebar open={open} setOpen={setOpen}>

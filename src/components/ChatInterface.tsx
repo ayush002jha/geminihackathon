@@ -92,7 +92,7 @@ const ChatInterface = () => {
       <div ref={chatContainerRef} className="flex-grow overflow-y-auto md:p-4">
         <div className="flex flex-col">
           {[...chats].reverse().map((msg, index) => {
-            if (msg.promptType === "mcq" && msg.role === "bot") {
+            if (msg.promptType === "MCQ" && msg.role === "bot") {
               console.log(msg.content);
               const quizData: QuizQuestion[] = JSON.parse(msg.content);
               return <Quiz key={index} quizData={quizData} />; // Pass quizData as a prop
