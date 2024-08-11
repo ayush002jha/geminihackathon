@@ -12,7 +12,7 @@ import { IoIosSchool } from "react-icons/io";
 import { GiArchiveResearch } from "react-icons/gi";
 import { FaUniversity } from "react-icons/fa";
 
-export default function SidebarDemo() {
+export default function Home() {
   const links = [
     {
       label: "Secondary",
@@ -46,53 +46,51 @@ export default function SidebarDemo() {
   const [open, setOpen] = useState(false);
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-4 w-full">
-
-    <div
-      className={cn(
-        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1  mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
-        " max-h-[95vh]" // for your use case, use `h-screen` instead of `h-[60vh]`
-      )}
-    >
-      <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="justify-between gap-10">
-          <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden ">
-            {open ? <Logo /> : <LogoIcon />}
-            <div className="mt-8 flex flex-col gap-2">
-              {links.map((link, idx) => (
-                <SidebarLink key={idx} link={link} />
-              ))}
+      <div
+        className={cn(
+          "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1  mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
+          " max-h-[95vh]" // for your use case, use `h-screen` instead of `h-[60vh]`
+        )}
+      >
+        <Sidebar open={open} setOpen={setOpen}>
+          <SidebarBody className="justify-between gap-10">
+            <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden ">
+              {open ? <Logo /> : <LogoIcon />}
+              <div className="mt-8 flex flex-col gap-2">
+                {links.map((link, idx) => (
+                  <SidebarLink key={idx} link={link} />
+                ))}
+              </div>
             </div>
-          </div>
-          <div>
-            <SidebarLink
-              link={{
-                label: "Ayush Jha",
-                href: "#",
-                icon: (
-                  <Image
-                    src="https://media.licdn.com/dms/image/D5603AQH8-9soBjEVyA/profile-displayphoto-shrink_200_200/0/1698226937083?e=1729123200&v=beta&t=iymxV16ggEZDO_WYc6uIy1ALWjAHi-eijESyIb234Nc"
-                    className="h-7 w-7 flex-shrink-0 rounded-full"
-                    width={50}
-                    height={50}
-                    alt="Avatar"
-                  />
-                ),
-              }}
-            />
-          </div>
-        </SidebarBody>
-      </Sidebar>
-      {/* <Dashboard /> */}
-      <div className="flex flex-1 flex-col bg-neutral-900 p-4">
-        <Navbar />
-        <ChatInterface />
+            <div>
+              <SidebarLink
+                link={{
+                  label: "Ayush Jha",
+                  href: "#",
+                  icon: (
+                    <Image
+                      src="https://media.licdn.com/dms/image/D5603AQH8-9soBjEVyA/profile-displayphoto-shrink_200_200/0/1698226937083?e=1729123200&v=beta&t=iymxV16ggEZDO_WYc6uIy1ALWjAHi-eijESyIb234Nc"
+                      className="h-7 w-7 flex-shrink-0 rounded-full"
+                      width={50}
+                      height={50}
+                      alt="Avatar"
+                    />
+                  ),
+                }}
+              />
+            </div>
+          </SidebarBody>
+        </Sidebar>
+        {/* <Dashboard /> */}
+        <div className="flex flex-1 flex-col bg-neutral-900 p-4">
+          <Navbar />
+          <ChatInterface />
+        </div>
       </div>
-    </div>
     </main>
-
   );
 }
-export const Logo = () => {
+const Logo = () => {
   return (
     <Link
       href="/"
@@ -109,7 +107,7 @@ export const Logo = () => {
     </Link>
   );
 };
-export const LogoIcon = () => {
+const LogoIcon = () => {
   return (
     <Link
       href="/"
