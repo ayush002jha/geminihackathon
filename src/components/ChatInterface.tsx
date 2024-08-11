@@ -32,7 +32,7 @@ const ChatInterface = () => {
     const isUser = msg.role === "usr";
     const bubbleClass = isUser
       ? "bg-blue-500 text-white"
-      : "bg-gray-200 text-black";
+      : "bg-neutral-300 text-black";
     const alignmentClass = isUser ? "justify-start" : "justify-end";
 
     return (
@@ -88,7 +88,7 @@ const ChatInterface = () => {
   };
 
   return (
-    <div className="w-full min-w-4xl bg-muted rounded-lg shadow-md flex flex-col h-[80vh] mt-48 md:p-12">
+    <div className="w-full min-w-4xl bg-muted rounded-lg shadow-md flex flex-col h-[80vh]  md:p-12">
       <div ref={chatContainerRef} className="flex-grow overflow-y-auto md:p-4">
         <div className="flex flex-col">
           {[...chats].reverse().map((msg, index) => {
@@ -167,13 +167,13 @@ const Quiz: React.FC<QuizProps> = ({ quizData }) => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
+    <div className="p-6 bg-muted min-h-screen rounded-xl my-4">
       <h1 className="text-2xl md:text-2xl lg:text-4xl font-semibold max-w-7xl mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
         <Cover>Objective Questions</Cover>
       </h1>
       {quizData.map((item, index) => (
-        <div key={index} className="mb-6 p-4 bg-white shadow-lg rounded-lg">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">
+        <div key={index} className="mb-6 p-4 bg-neutral-700 shadow-lg rounded-lg ">
+          <h3 className="text-lg font-semibold text-gray-100 mb-4">
             {item.question}
           </h3>
           <ul className="list-none pl-0">

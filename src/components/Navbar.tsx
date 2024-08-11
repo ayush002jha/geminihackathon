@@ -22,7 +22,7 @@ export function Navbar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "fixed top-0 w-full flex flex-col items-center ",
+        " top-0 w-full flex flex-col items-center ",
         className
       )}
     >
