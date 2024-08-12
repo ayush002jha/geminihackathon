@@ -86,7 +86,32 @@ export default function Home() {
           <Navbar />
           <ChatInterface />
         </div>
+        <Sidebar open={true} >
+          <SidebarBody className="h-[95dvh] justify-around gap-6">
+            <div className="flex flex-col items-center justify-center  font-bold text-xl bg-neutral-900 rounded-full py-2  ">
+              <Image src={'/audio.gif'} alt="audio-gif" height={500} width={500} className=" object-contain h-20 "  />
+              <p >Talk To GURU</p>
+            </div>
+            <div className="flex flex-col items-center justify-center  font-bold text-xl bg-[#1B1919] rounded-full py-2  ">
+              <Image src={'/performance.jpg'} alt="perf-gif" height={500} width={500} className=" object-contain h-20  "  />
+              <p >Performance</p>
+            </div>
+            <div className="flex flex-col items-center justify-center  font-bold text-xl bg-neutral-900 rounded-full py-2  ">
+              <Image src={'/notes.gif'} alt="notes-gif" height={500} width={500} className=" object-contain h-20  "  />
+              <p >Notes</p>
+            </div>
+            <div className="flex flex-col items-center justify-center  font-bold text-xl bg-[#1880FC] rounded-full py-2  ">
+              <Image src={'/exam.gif'} alt="exam-gif" height={500} width={500} className=" object-contain h-20 rounded-full "  />
+              <p >Assessment</p>
+            </div>
+            <div className="flex flex-col items-center justify-center  font-bold text-xl bg-neutral-900 rounded-full py-2  ">
+              <Image src={'/game.gif'} alt="game-gif" height={500} width={500} className=" object-contain h-20 rounded-full "  />
+              <p >Learn By Game</p>
+            </div>
+          </SidebarBody>
+        </Sidebar>
       </div>
+
     </main>
   );
 }

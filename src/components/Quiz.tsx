@@ -33,7 +33,7 @@ export interface QuizQuestion {
     };
   
     return (
-      <div className="p-6 bg-muted min-h-screen rounded-xl my-4">
+      <div className="p-6 bg-neutral-900 min-h-screen rounded-xl my-4 max-w-[60rem] w-full self-end">
         <h1 className="text-2xl md:text-2xl lg:text-4xl font-semibold max-w-7xl mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
           <Cover>Objective Questions</Cover>
         </h1>
