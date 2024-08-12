@@ -86,6 +86,7 @@ export default function Home() {
           <Navbar />
           <ChatInterface />
         </div>
+        <div className="hidden md:flex">
         <Sidebar open={true} >
           <SidebarBody className="h-[95dvh] justify-around gap-6">
             <div className="flex flex-col items-center justify-center  font-bold text-xl bg-neutral-900 rounded-full py-2  ">
@@ -110,6 +111,7 @@ export default function Home() {
             </div>
           </SidebarBody>
         </Sidebar>
+        </div>
       </div>
 
     </main>
