@@ -19,7 +19,7 @@ export function Navbar({ className }: { className?: string }) {
   };
 
   return (
-    <Cover className={cn(" top-0 w-full flex flex-col items-center ", className)}>
+    <div className={cn(" top-0 w-full flex flex-col items-center ", className)}>
       <div className={" w-full"}>
         <FilePond
           server={{
@@ -31,6 +31,7 @@ export function Navbar({ className }: { className?: string }) {
           labelIdle='Drag & Drop your files or <span class="filepond--label-action"> Browse </span> To Interact With Them'
         />
       </div>
+      <Cover className="lg:w-[90rem]">
       <Input />
         <div className="flex gap-4 items-center justify-center my-2 flex-wrap">
           {Prompts.map((prompt, idx) => (
@@ -49,6 +50,7 @@ export function Navbar({ className }: { className?: string }) {
             </Toggle>
           ))}
         </div>
-    </Cover>
+        </Cover>
+    </div>
   );
 }
